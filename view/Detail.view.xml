@@ -1,0 +1,113 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+		id="D1" controllerName="sap.ui.final.test.finalxml.Detail" xmlns:html="http://www.w3.org/1999/xhtml">
+		
+		
+		<Page title="Business Partner Detail">
+			<ObjectHeader
+					title="{ path:'BusinessPartnerID' , formatter:'.businesspartnerdetail' }"
+					number="{Company}"
+					numberUnit="{TelephoneNumber}"
+					icon="finalxml/14.jpg">
+					<statuses>
+						<ObjectStatus
+									text="{EmailAddress}"
+									state="Success"/>
+									
+					</statuses>
+					
+					<attributes>
+						<ObjectAttribute text = "{ path: 'BusinessPartnerRoleText' , formatter: '.businesspartnerroletext' }"/>
+						<ObjectAttribute text = "{ path: 'BusinessPartnerKey' , formatter: '.businesspartnerkey' }"/>
+						
+					</attributes>
+			</ObjectHeader>
+			
+			<IconTabBar>
+				<items>
+					<IconTabFilter
+							icon = "sap-icon://hint"
+							text = "Address">
+							<content>
+								<Toolbar design="Solid">
+									<content>
+										<Title 
+											text="Business Address"
+											width = "100%"
+											titlestyle = "sap.ui.core.TitleLevel.H5">
+										</Title>
+									</content>	
+								</Toolbar>		
+								<Text 
+									text="{ parts: [
+													{path: 'Address/Building'},
+													{path: 'Address/Street'},
+					            					{path: 'Address/City'},
+					            					{path: 'Address/PostalCode'},
+					            					{path: 'Address/AddressTypeCode'},   
+					            					{path: 'Address/CountryText'}
+													],
+											formatter: '.addressdetails'		
+										}">
+									
+								</Text>
+									</content>	
+					</IconTabFilter>
+					
+					<IconTabFilter
+						icon = "sap-icon://notes"
+						text = "Other Details">
+						<content>
+							<Table>
+								<columns>
+									<Column width="12em">
+										<header><Label text="Other Details" /></header>
+									</Column>
+									
+									<Column width="12em">
+										<header><Label text="" /></header>
+									</Column>
+									
+									<Column width="12em">
+										<header><Label text="" /></header>
+									</Column>
+								</columns>
+								
+								<ColumnListItem>
+									<cells>
+										<ObjectIdentifier title = "Web Address" />
+										<Link text="{WebAddress}" target="_blank" href="{WebAddress}" />
+									</cells>
+								</ColumnListItem>
+								
+								<ColumnListItem>
+									<cells>
+										<ObjectIdentifier title="Country Code" />
+										<Link id="ln1" text="{CountryCode}" press="press1" />
+									</cells>
+								</ColumnListItem>
+								
+								<ColumnListItem>
+									<cells>
+										<ObjectIdentifier title="Country Name" />
+										<Text text="{Address/CountryText}" />
+									</cells>
+								</ColumnListItem>
+							</Table>
+						</content>
+					</IconTabFilter>
+				</items>
+			
+			</IconTabBar>
+			
+			<footer>
+				<Bar>
+					
+				</Bar>
+			</footer>
+		
+		
+		
+		
+		</Page>
+	
+</core:View>
