@@ -1,0 +1,72 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+		id="M1" controllerName="sap.ui.final.test.finalxml.Master" xmlns:html="http://www.w3.org/1999/xhtml">
+		
+		<Page title="Business Partner List">
+			<subHeader>
+				<Bar>
+					<contentMiddle>
+						<SearchField
+							id="searchField"
+							showRefreshButton = "true"
+							search="handleSearch"
+							width="100%" >
+						</SearchField>
+					</contentMiddle>
+					
+				</Bar>
+			</subHeader>
+				
+			<List 
+				id="list"
+				growing = "true"
+				items="{/BusinessPartnerCollection}">
+				
+					<ObjectListItem
+						title="{BusinessPartnerID}"
+						type="Active"
+						press="press"
+						icon = "finalxml/14.jpg"
+						numberUnit="{CurrencyCode}">
+						
+						<attributes>
+							<ObjectAttribute text="{ path: 'Company' , formatter: '.company' }" />
+							<ObjectAttribute text="{ path: 'EmailAddress', formatter: '.email' }" />
+							<ObjectAttribute text="{ path: 'TelephoneNumber', formatter: '.tel' }"/>
+						</attributes>
+					</ObjectListItem>
+				
+			</List>
+				
+				
+			<footer>
+				<Bar>
+					<contentRight>
+						<Select id="sortSelect" 
+								icon = "sap-icon://sort"
+								type="IconOnly"
+								autoAdjustWidth = "true"
+								change = "handleSorterChange">
+								<items>
+									<core:Item id="sdesc" key="sdesc" text="Sort DESC"/>
+									<core:Item id="sasc" key="sasc" text="Sort ASC"/>
+								</items>
+						</Select>
+						
+						<Select id = "filterSelect"
+								change = "handleFilterChange"
+								icon = "sap-icon://filter"
+								type = "IconOnly"
+								autoAdjustWidth = "true">
+							
+						</Select>
+					</contentRight>
+				</Bar>
+			</footer>
+			
+		</Page>
+				
+				
+
+	
+	
+</core:View>
